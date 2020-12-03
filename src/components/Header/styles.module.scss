@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 33px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 35px 0;
+}
+.uploadButton {
+  width: 155px;
+  height: 40px;
+  background: #bebebe;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background: linear-gradient(#dedede 30%, #bebebe 60%, #cecece);
+  }
+  &:active {
+    background: linear-gradient(#bebebe 30%, #cecece 60%, #dedede);
+  }
+}

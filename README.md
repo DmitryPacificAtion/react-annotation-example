@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Annotations experience
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This test task is about implementing a feature of leaving annotations on images, like on Figma or Invision, but much simpler.
 
-## Available Scripts
+The main purpose is to see your code structure, code quality, and approach in general.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+### Fake server
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The server implementation is optional but definitely makes you stand out of the crowd. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+It basically creates the following endpoints:
 
-### `npm test`
+```
+GET v1/annotations
+POST v1/annotations
+DELETE v1/annotations/{id}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Make it running:**
 
-### `npm run build`
+- Run `npm i -g json-server`
+- Run `json-server --watch db.json`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Mockup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Get a mockup](https://www.figma.com/file/RkOUnhCQ4fydOnRzuXd6SW/Test-Task?node-id=0%3A1). If you don't have access, please write an email to dev@24slides.com.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### How annotations work?
 
-### `npm run eject`
+An annotation is a comment you can leave on an image to request some change.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+A position of the annotation represented in `x`, `y` numbers between 0 and 1, where 0 is top or left, 1 is right or bottom.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+When user clicks on the image, the calculation of `x` and `y` is gonna be:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+x = left offset / width
+y = top offset / height
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Requirements
 
-## Learn More
+- You need to use the following stack: React, SASS. Please follow best practices as much as possible and focus on quality.
+- Create a markup according to the mockup, the layout should be responsive
+- If you resize/zoom the browser tab, annotations should stay on same places on images
+- Implement the possibility drag the image vertically
+    - If uploaded image's height is bigger than container's, it should be cropped
+    - When image is cropped and user sees only part of it, you need to make is possible to "drag" it vertically with the mouse
+    - Annotations should stay on same places when you drag the image vertically
+- Implement the possibility to zoom in/out the image
+    - The max size for width should be the width of the container
+    - The max size for height should be the size of the image, regardless of the container height
+    - Annotations should stay on same places when you zoom in/out the image
+    - Optionally: it would be nice to be able to zoom the image using the mouse wheel
+- Implement the possibility to create annotations on the image
+    - Optionally: send a request to `POST v1/annotations` when submitting new annotation
+    - Optionally: implement the possibility to delete an annotation via `DELETE v1/annotations/{id}`
+    - Optionally: implement the possibility to move an annotation using mouse 
+- Optionally: upload the image on drag&drop in the container
+- Optionally: preload a default image on initialization and render annotations from `GET v1/annotations`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Any questions?
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you have any questions or suggestions related to the task, please submit an issue.
