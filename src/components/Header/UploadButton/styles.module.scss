@@ -1,0 +1,29 @@
+.container{
+  display: block;
+}
+.uploadButton {
+  width: 155px;
+  height: 40px;
+  background: #bebebe;
+  color: #1E1E1E;
+  border-radius: 4px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 0px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  &:hover {
+    background: linear-gradient(#dedede 30%, #bebebe 60%, #cecece);
+  }
+  &:active {
+    background: linear-gradient(#bebebe 30%, #cecece 60%, #dedede);
+  }
+}
+.input {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
